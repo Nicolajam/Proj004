@@ -1,0 +1,12 @@
+YAML
+name: DownloadData
+inputs:
+  url: string
+  output_path: string
+outputs:
+  dataframe: Dataset
+run_step:
+  script_name: download_data.py
+  arguments:
+    --url: ${{inputs.url}}
+    --output_path: ${{inputs.output_path}}

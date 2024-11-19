@@ -1,0 +1,13 @@
+YAML
+description: Train a Logistic regression model on Iris dataset
+
+steps:
+  - name: Download data
+  reference: downloads/downlaod_data.yaml
+  arguments:
+    url: "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+    output_path: "data/iris.csv"
+  - name: Train model
+  script_mode: PythonScript
+  source_directory: train_script
+  script_arguments: ["data/iris.csv"]
