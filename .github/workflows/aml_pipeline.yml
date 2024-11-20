@@ -1,6 +1,5 @@
 YAML
-name: Train ML Pipeline
-
+name:Train ML Pipeline
 on:
   push: # Trigger on code push to any branch
 
