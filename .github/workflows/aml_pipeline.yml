@@ -1,5 +1,4 @@
-YAML
-name:Train ML Pipeline
+name: Train ML Pipeline
 on:
   push: # Trigger on code push to any branch
 
@@ -8,20 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -name: Checkout repo
-      - uses: actions/checkout@v2 # Checkout code from repository
+      uses: actions/checkout@v2 # Checkout code from repository
       # Login to Azure (replace with your credentials)
-      - name: Login to Azure
-      uses: admin@MngEnvMCAP643584.onmicrosoft.com
-      with:
-        clientId: ${{ secrets.AZURE_CLIENT_ID}}
-          clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
-          tenanId: ${{ secrets.AZURE_TENANT_ID }}
-        - name: Install Azure CLI
-        - uses: Azure/setup-cli@v2
-        - name: Install Azure ML CLI
-          run: |
-           az extension add -n ml
-        - name: Run Azure ML pipeline
-          run: |
-           az ml workspace list
-           az ml job create -n train_pipeline -f train_pipeline.yaml -w mltest -g sandbox
+    -name: Login to Azure
+    uses: admin@MngEnvMCAP643584.onmicrosoft.com
+    with:
+      clientId: ${{ secrets.AZURE_CLIENT_ID}}
+      clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
+      tenantId: ${{ secrets.AZURE_TENANT_ID }}
+  -name: Install Azure CLI
+  uses: Azure/setup-cli@v2
+-name: Install Azure ML CLI
+run: |
+  az extension add -n ml
+-name: Run Azure ML pipeline
+run: |
+ az ml workspace list
+ az ml job create -n train_pipeline -f train_pipeline.yaml -w mltest -g sandbox
